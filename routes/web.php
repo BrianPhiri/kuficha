@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "MemoController@index");
 
 Route::resource('memos', 'MemoController');
 Route::post('/memos/{id}', 'MemoController@decryptMessage');

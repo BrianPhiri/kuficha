@@ -16,7 +16,8 @@ class MemoController extends Controller
      */
     public function index()
     {
-        return Memo::get();
+        $memos = Memo::get();
+        return view('welcome')->with('memos',$memos);
     }
 
     /**
@@ -43,7 +44,8 @@ class MemoController extends Controller
         $memo->title = $request->title;
         $memo->message = $body;
         $memo->passkey = $passkey;
-        $memo->user_id = $request->user_id;
+        // $memo->user_id = $request->user_id;
+        $memo->user_id = 1;
         $memo->save();
 
         return $memo;
