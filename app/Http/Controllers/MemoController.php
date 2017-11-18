@@ -59,7 +59,9 @@ class MemoController extends Controller
      */
     public function show($id)
     {
-        //
+        $memo = Memo::findOrFail($id);
+        return view('passkey')->with('memo', $memo);
+        // return "Hello";
     }
 
     /**
@@ -102,12 +104,18 @@ class MemoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function decryptMessage($id,Request $request){
-
-        $memo = Memo::findOrFail($id);
+    public function decryptMessage(Request $request){
+        $message = "";
+        $memo = Memo::findOrFail($request->id);
         if(Hash::check($request->passkey, $memo->passkey)){
-            return Crypt::decryptString($memo->message);
+            $message = Crypt::decryptString($memo->message);
         }
-        return $memo->message;
+        $m = array(
+            "title" => $memo->title,
+            "message" => $message
+        );
+
+        return view('read')->with('memo', $m);
+        
     }
 }

@@ -1,24 +1,22 @@
 <template>
-    <div>  
-        <div class="card border-secondary mb-3">
+    <div style="padding-top:100px; padding-right: 100px; padding-left:100px">
+        <div class="card">
             <div class="card-header">
                 {{ memo.title }}
             </div>
             <div class="card-body">
-                <h4 class="card-title">Writen on {{ memo.created_at }}</h4>
+                <h4 class="card-title"></h4>
                 <p class="card-text">{{ memo.message }}</p>
-                <a v-bind:href="memo.id" class="btn btn-primary float-right" >View Plain message</a>
             </div>
         </div>
     </div>
-  </div>    
 </template>
 
 <script>
     export default {
         props: ['memo'],
         mounted() {
-            console.log('Memo component mounted.')
+            console.log('plain text component mounted.')
         }
     }
 </script>
