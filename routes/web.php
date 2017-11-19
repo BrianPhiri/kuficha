@@ -15,3 +15,6 @@ Route::get('/', "MemoController@index");
 
 Route::resource('memos', 'MemoController');
 Route::post('/memos/{id}', 'MemoController@decryptMessage');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
