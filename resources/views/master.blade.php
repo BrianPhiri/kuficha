@@ -10,17 +10,30 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
+    
     <link href="{{ mix('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-
+    
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding: 20px; margin-bottom:10px;">
-            <h1 class="navbar-brand">Kuficha</h1>
+            <a href="/" class="navbar-brand">{{ Auth::user()->name }}'s Kuficha</a>
+            <li style="float: right;">
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                             document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                </form>
+            </li>
         </nav>
         @yield('content')
     </div>
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('js/bootquery.min.js') }}"></script>
+    
 </body>
 </html>

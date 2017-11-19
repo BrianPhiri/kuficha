@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('/admin', 'AdminController@index');
 
 Route::get('/', "MemoController@index");
 Route::get('/{id}', "MemoController@show");
-// Route::resource('memos', 'MemoController');
+Route::post('/memos', 'MemoController@store');
 
 Route::post('/decrypt', 'MemoController@decryptMessage');
+
