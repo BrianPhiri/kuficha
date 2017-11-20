@@ -6,6 +6,8 @@ use App\Memo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class MemoController extends Controller
 {
@@ -20,7 +22,7 @@ class MemoController extends Controller
      */
     public function index()
     {
-        $memos = Memo::get();
+        $memos = Memo::get()->where("user_id",Auth::id());
         return view('welcome')->with('memos',$memos);
     }
 
@@ -49,7 +51,7 @@ class MemoController extends Controller
         $memo->message = $body;
         $memo->passkey = $passkey;
         // $memo->user_id = $request->user_id;
-        $memo->user_id = 1;
+        $memo->user_id = Auth::id();
         $memo->save();
 
         return $memo;
@@ -63,7 +65,9 @@ class MemoController extends Controller
      */
     public function show($id)
     {
-        //
+        $memo = Memo::findOrFail($id);
+        return view('passkey')->with('memo', $memo);
+        // return "Hello";
     }
 
     /**
@@ -106,12 +110,18 @@ class MemoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function decryptMessage($id,Request $request){
-
-        $memo = Memo::findOrFail($id);
+    public function decryptMessage(Request $request){
+        $message = "Wrong passkey";
+        $memo = Memo::findOrFail($request->id);
         if(Hash::check($request->passkey, $memo->passkey)){
-            return Crypt::decryptString($memo->message);
+            $message = Crypt::decryptString($memo->message);
         }
-        return $memo->message;
+        $m = array(
+            "title" => $memo->title,
+            "message" => $message
+        );
+
+        return view('read')->with('memo', $m);
+        
     }
 }

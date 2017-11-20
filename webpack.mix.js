@@ -11,5 +11,6 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
+mix.js(['public/js/jquery.min.js', 'public/js/bootstrap.min.js'], 'public/js/bootquery.min.js')
+   .js('resources/assets/js/app.js', 'public/js')
    .styles('public/css/bootstrap.min.css', 'public/css/bootstrap.min.css');

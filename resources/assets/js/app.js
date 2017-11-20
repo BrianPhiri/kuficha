@@ -17,7 +17,8 @@ window.Vue = require('vue');
 
 
 Vue.component('memolist', require('./components/client/MemoList.vue'));
-
+Vue.component('passkey', require('./components/passkey/PassKey.vue'));
+Vue.component('cleartext', require('./components/client/Clear.vue'));
 const app = new Vue({
     el: '#app'
 });

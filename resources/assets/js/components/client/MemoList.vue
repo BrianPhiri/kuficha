@@ -67,6 +67,7 @@ export default {
             this.isCreating = false;
         },
         sendForm(){
+            // console.log(this.memo)
             axios.post('memos', this.memo)
                 .then((res) => {
                     console.log(res)
