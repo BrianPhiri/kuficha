@@ -17,7 +17,6 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding: 20px; margin-bottom:10px;">
-<<<<<<< HEAD
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                     data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -66,25 +65,6 @@
             integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
             crossorigin="anonymous"></script>
     <script src="{{ mix('js/app.js') }}"></script>
-=======
-            <a href="/" class="navbar-brand">{{ Auth::user()->name }}'s Kuficha</a>
-            <li style="float: right;">
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                </form>
-            </li>
-        </nav>
-        @yield('content')
-    </div>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ mix('js/bootquery.min.js') }}"></script>
-    
->>>>>>> 0ae363e8fc6a5d03a5f9cc628d49db227bade8da
 </body>
 </html>

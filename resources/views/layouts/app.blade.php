@@ -8,11 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<<<<<<< HEAD
     <title>Kuficha</title>
-=======
-    <title>{{ config('app.name', 'Laravel') }}</title>
->>>>>>> 0ae363e8fc6a5d03a5f9cc628d49db227bade8da
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -33,11 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-<<<<<<< HEAD
                         Kuficha
-=======
-                        {{ config('app.name', 'Laravel') }}
->>>>>>> 0ae363e8fc6a5d03a5f9cc628d49db227bade8da
                     </a>
                 </div>
 
@@ -75,11 +67,7 @@
                             </li>
                         @endguest
                     </ul>
-<<<<<<< HEAD
-                </div>
-=======
             </div>
->>>>>>> 0ae363e8fc6a5d03a5f9cc628d49db227bade8da
             </div>
         </nav>
 

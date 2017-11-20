@@ -20,11 +20,4 @@ Route::post('/memos', 'MemoController@store');
 
 Route::post('/decrypt', 'MemoController@decryptMessage');
 
-<<<<<<< HEAD
-Route::resource('memos', 'MemoController');
-Route::post('/memos/{id}', 'MemoController@decryptMessage');
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
-=======
->>>>>>> 0ae363e8fc6a5d03a5f9cc628d49db227bade8da

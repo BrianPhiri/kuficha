@@ -13,7 +13,7 @@ class MemoController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('decryptMessage');
     }
     /**
      * Display a listing of the resource.
@@ -50,8 +50,7 @@ class MemoController extends Controller
         $memo->title = $request->title;
         $memo->message = $body;
         $memo->passkey = $passkey;
-        // $memo->user_id = $request->user_id;
-        $memo->user_id = Auth::id();
+        $memo->user_id = 1;
         $memo->save();
 
         return $memo;
@@ -120,8 +119,8 @@ class MemoController extends Controller
             "title" => $memo->title,
             "message" => $message
         );
-
-        return view('read')->with('memo', $m);
+        return $message;
+        // return view('read')->with('memo', $m);
         
     }
 }
