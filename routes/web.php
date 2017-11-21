@@ -21,3 +21,7 @@ Route::post('/memos', 'MemoController@store');
 Route::post('/decrypt', 'MemoController@decryptMessage');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin', function () {
+   return View('admin');
+})->middleware('role:Administrator');
