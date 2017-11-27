@@ -44,13 +44,14 @@ class MemoController extends Controller
      */
     public function store(Request $request)
     {
-        $passkey = Hash::make($request->passkey);
+//        $passkey = Hash::make($request->passkey);
+        $passkey = bcrypt($request->passkey);
         $body = Crypt::encryptString($request->message);
         $memo = new Memo;
         $memo->title = $request->title;
         $memo->message = $body;
         $memo->passkey = $passkey;
-        $memo->user_id = 1;
+        $memo->user_id = Auth::id();
         $memo->save();
 
         return $memo;
@@ -112,15 +113,15 @@ class MemoController extends Controller
     public function decryptMessage(Request $request){
         $message = "Wrong passkey";
         $memo = Memo::findOrFail($request->id);
-        if(Hash::check($request->passkey, $memo->passkey)){
+        if(!Hash::check($request->passkey, $memo->passkey)){
             $message = Crypt::decryptString($memo->message);
         }
         $m = array(
             "title" => $memo->title,
             "message" => $message
         );
-        return $message;
-        // return view('read')->with('memo', $m);
+//        return $message;
+         return view('read')->with('memo', $m);
         
     }
 }
